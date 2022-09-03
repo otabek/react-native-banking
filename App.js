@@ -7,11 +7,8 @@
  */
 
 import React from 'react';
-import {Dimensions} from 'react-native';
 import SecondSplashScreen from './src/screens/SecondSplashScreen';
-// import SplashScreen from './src/screens/SplashScreen';
-
-export const {width, height} = Dimensions.get('window');
+import SplashScreen from './src/screens/SplashScreen';
 
 const App = () => {
   return (
