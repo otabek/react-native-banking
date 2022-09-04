@@ -1,20 +1,21 @@
-import {StyleSheet, View} from 'react-native';
+import {Dimensions, StyleSheet, View} from 'react-native';
 import React from 'react';
-import YellowDotIcon from '../../assets/icons/YellowDot.icon';
-import DotIcon from '../../assets/icons/Dot.icon';
+import {colors} from '../styles/colors';
 
-const DotNavigator = () => {
+const {width} = Dimensions.get('window');
+
+const DotNavigator = ({slides, currentSlideIndex}) => {
   return (
     <View style={styles.navigation}>
-      <View style={styles.navItem}>
-        <YellowDotIcon />
-      </View>
-      <View style={styles.navItem}>
-        <DotIcon />
-      </View>
-      <View style={styles.navItem}>
-        <DotIcon />
-      </View>
+      {slides?.map((_, index) => (
+        <View
+          key={index}
+          style={[
+            styles.navItem,
+            currentSlideIndex === index && styles.navItemActive,
+          ]}
+        />
+      ))}
     </View>
   );
 };
@@ -23,10 +24,25 @@ export default DotNavigator;
 
 const styles = StyleSheet.create({
   navigation: {
+    position: 'absolute',
+    width: width,
     flexDirection: 'row',
+    justifyContent: 'center',
     alignItems: 'center',
+    bottom: 51,
+  },
+  navItemActive: {
+    backgroundColor: colors.yellow,
+    width: 9,
+    height: 9,
+    borderRadius: 5,
+    marginHorizontal: 10,
   },
   navItem: {
+    backgroundColor: colors.lightGrey,
+    width: 7,
+    height: 7,
+    borderRadius: 4,
     marginHorizontal: 10,
   },
 });

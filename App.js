@@ -7,14 +7,10 @@
  */
 
 import React from 'react';
-import SecondSplashScreen from './src/screens/SecondSplashScreen';
-import SplashScreen from './src/screens/SplashScreen';
+import OnboardingScreen from './src/screens/OnboardingScreen/OnboardingScreen';
 
 const App = () => {
-  return (
-    // <SplashScreen />
-    <SecondSplashScreen />
-  );
+  return <OnboardingScreen />;
 };
 
 export default App;

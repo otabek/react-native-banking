@@ -8,8 +8,7 @@ import {
 } from 'react-native';
 import React from 'react';
 import Video from 'react-native-video';
-import ArrowRightIcon from '../../assets/icons/ArrowRight.icon';
-import DotNavigator from '../components/DotNavigator';
+import ArrowRightIcon from '../../../assets/icons/ArrowRight.icon';
 
 const SecondSplashScreen = () => {
   const {styles} = useStyles();
@@ -21,7 +20,7 @@ const SecondSplashScreen = () => {
   return (
     <View style={styles.root}>
       <Video
-        source={require('../../assets/videos/step.mp4')}
+        source={require('../../../assets/videos/step.mp4')}
         style={styles.backgroundVideo}
         repeat
         resizeMode="cover"
@@ -36,7 +35,6 @@ const SecondSplashScreen = () => {
       </SafeAreaView>
       <View style={styles.content}>
         <Text style={styles.text}>An app that adapts to your unique needs</Text>
-        <DotNavigator />
       </View>
     </View>
   );
@@ -50,6 +48,8 @@ const useStyles = () => {
   const styles = StyleSheet.create({
     root: {
       flex: 1,
+      width: width,
+      height: height,
     },
     backgroundVideo: {
       width: width,

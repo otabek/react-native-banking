@@ -1,8 +1,7 @@
 import {Image, StyleSheet, Text, useWindowDimensions, View} from 'react-native';
 import React from 'react';
 import Video from 'react-native-video';
-import {colors} from '../styles/colors';
-import DotNavigator from '../components/DotNavigator';
+import {colors} from '../../styles/colors';
 
 const SecondSpashScreen = () => {
   const {styles} = useStyles();
@@ -10,20 +9,19 @@ const SecondSpashScreen = () => {
   return (
     <View style={styles.root}>
       <Video
-        source={require('../../assets/videos/waves.mp4')}
+        source={require('../../../assets/videos/waves.mp4')}
         style={styles.backgroundVideo}
         repeat
         resizeMode="cover"
       />
       <View style={styles.logo}>
-        <Image source={require('../../assets/logo.png')} />
+        <Image source={require('../../../assets/logo.png')} />
       </View>
       <View style={styles.content}>
         <View style={styles.textContainer}>
           <Text style={styles.secondaryText}>The Saudi Investment Bank</Text>
           <Text style={styles.moto}>Welcome to the fluid banking</Text>
         </View>
-        <DotNavigator />
       </View>
     </View>
   );
@@ -37,6 +35,8 @@ const useStyles = () => {
   const styles = StyleSheet.create({
     root: {
       flex: 1,
+      width: width,
+      height: height,
     },
     backgroundVideo: {
       width: width,

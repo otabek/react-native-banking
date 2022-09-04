@@ -15,4 +15,4 @@ const ArrowRightIcon = props => {
   );
 };
 
-export default ArrowRightIcon;
+export default React.memo(ArrowRightIcon);
