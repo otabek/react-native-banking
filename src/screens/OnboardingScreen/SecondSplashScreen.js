@@ -1,19 +1,22 @@
 import {
-  Pressable,
   SafeAreaView,
   StyleSheet,
   Text,
+  TouchableOpacity,
   useWindowDimensions,
   View,
 } from 'react-native';
 import React from 'react';
 import Video from 'react-native-video';
 import ArrowRightIcon from '../../../assets/icons/ArrowRight.icon';
+import {useNavigation} from '@react-navigation/native';
 
 const SecondSplashScreen = () => {
+  const navigation = useNavigation();
   const {styles} = useStyles();
 
   const handlePress = () => {
+    navigation.navigate('Login');
     console.log('pressed');
   };
 
@@ -26,12 +29,12 @@ const SecondSplashScreen = () => {
         resizeMode="cover"
       />
       <SafeAreaView>
-        <Pressable onPress={handlePress} style={styles.skipContainer}>
+        <TouchableOpacity onPress={handlePress} style={styles.skipContainer}>
           <View style={styles.arrow}>
             <ArrowRightIcon />
           </View>
           <Text style={styles.navText}>Skip</Text>
-        </Pressable>
+        </TouchableOpacity>
       </SafeAreaView>
       <View style={styles.content}>
         <Text style={styles.text}>An app that adapts to your unique needs</Text>
