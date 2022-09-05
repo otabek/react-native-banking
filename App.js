@@ -7,10 +7,14 @@
  */
 
 import React from 'react';
+import LoginScreen from './src/screens/LoginScreen';
 import OnboardingScreen from './src/screens/OnboardingScreen/OnboardingScreen';
 
 const App = () => {
-  return <OnboardingScreen />;
+  return (
+    // <OnboardingScreen />
+    <LoginScreen />
+  );
 };
 
 export default App;

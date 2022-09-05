@@ -3,7 +3,7 @@ import React from 'react';
 import {colors} from '../../../styles/colors';
 
 const Label = ({color, children}) => {
-  return <Text style={[styles.label, {color: color}]}>{children}</Text>;
+  return <Text style={[styles.label, {color}]}>{children}</Text>;
 };
 
 export default Label;
