@@ -17,7 +17,6 @@ const SecondSplashScreen = () => {
 
   const handlePress = () => {
     navigation.navigate('Login');
-    console.log('pressed');
   };
 
   return (

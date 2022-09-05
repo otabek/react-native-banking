@@ -19,8 +19,12 @@ import EyeClosedIcon from '../../assets/icons/EyeClosed.icon';
 import Button from '../components/common/Button';
 import CustomText from '../components/common/typography/CustomText';
 import {USER_NAME, PASSWORD} from '@env';
+import {useDispatch} from 'react-redux';
+import {setAuth} from '../features/auth/authSlice';
 
 const LoginScreen = () => {
+  const dispatch = useDispatch();
+
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
   const [isSecure, setIsSecure] = useState(true);
@@ -35,6 +39,7 @@ const LoginScreen = () => {
 
   const handleSubmit = () => {
     if (userName === USER_NAME && password === PASSWORD) {
+      dispatch(setAuth({username: userName, password}));
       console.log('successfully logged in');
     }
   };
