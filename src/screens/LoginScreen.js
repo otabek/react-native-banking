@@ -21,9 +21,11 @@ import CustomText from '../components/common/typography/CustomText';
 import {USER_NAME, PASSWORD} from '@env';
 import {useDispatch} from 'react-redux';
 import {setAuth} from '../features/auth/authSlice';
+import {useNavigation} from '@react-navigation/native';
 
 const LoginScreen = () => {
   const dispatch = useDispatch();
+  const navigation = useNavigation();
 
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
@@ -40,7 +42,7 @@ const LoginScreen = () => {
   const handleSubmit = () => {
     if (userName === USER_NAME && password === PASSWORD) {
       dispatch(setAuth({username: userName, password}));
-      console.log('successfully logged in');
+      navigation.navigate('Profile');
     }
   };
 
@@ -61,10 +63,10 @@ const LoginScreen = () => {
       </View>
       <Text style={styles.header}>Welcome to SAIB</Text>
       <View style={styles.inputContainer}>
-        <Label color={colors.crude30}>Username</Label>
+        <Label color="crude30">Username</Label>
         <TextInput
           style={styles.input}
-          placeholder="e.g. Otabek Narzullaev"
+          placeholder="e.g. itechart"
           placeholderTextColor={colors.crude50}
           value={userName}
           onChangeText={v => handleChange(v, 'username')}
@@ -76,9 +78,11 @@ const LoginScreen = () => {
         )}
       </View>
       <View style={styles.inputContainer}>
-        <Label color={colors.crude30}>Password</Label>
+        <Label color="crude30">Password</Label>
         <TextInput
           style={styles.input}
+          placeholder="e.g. 123456"
+          placeholderTextColor={colors.crude50}
           value={password}
           onChangeText={handleChange}
           secureTextEntry={isSecure}
@@ -97,9 +101,7 @@ const LoginScreen = () => {
         <View style={styles.firstAcc}>
           <CustomText color="white">Not a client? </CustomText>
           <TouchableOpacity>
-            <CustomText color={colors.yellow}>
-              Open your first account
-            </CustomText>
+            <CustomText color="yellow">Open your first account</CustomText>
           </TouchableOpacity>
         </View>
       </View>
