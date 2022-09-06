@@ -21,11 +21,9 @@ import CustomText from '../components/common/typography/CustomText';
 import {USER_NAME, PASSWORD} from '@env';
 import {useDispatch} from 'react-redux';
 import {setAuth} from '../features/auth/authSlice';
-import {useNavigation} from '@react-navigation/native';
 
 const LoginScreen = () => {
   const dispatch = useDispatch();
-  const navigation = useNavigation();
 
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
@@ -42,7 +40,6 @@ const LoginScreen = () => {
   const handleSubmit = () => {
     if (userName === USER_NAME && password === PASSWORD) {
       dispatch(setAuth({username: userName, password}));
-      navigation.navigate('Profile');
     }
   };
 

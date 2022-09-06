@@ -1,6 +1,7 @@
 import {
   Image,
   ScrollView,
+  StatusBar,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -13,8 +14,16 @@ import Label from '../components/common/typography/Label';
 import CustomText from '../components/common/typography/CustomText';
 import PenIcon from '../../assets/icons/Pen.icon';
 import Button from '../components/common/Button';
+import {useDispatch} from 'react-redux';
+import {resetAuth} from '../features/auth/authSlice';
 
 const Profile = () => {
+  const dispatch = useDispatch();
+
+  const handleLogout = () => {
+    dispatch(resetAuth());
+  };
+
   const userDetails = [
     {title: 'Beneficiary nickname', body: 'Ahlam Saade', icon: <PenIcon />},
     {title: 'Beneficiary full name', body: 'Ahlam Saade'},
@@ -30,6 +39,7 @@ const Profile = () => {
 
   return (
     <View style={styles.root}>
+      <StatusBar barStyle="dark-content" />
       <View style={styles.avatarWrapper}>
         <View style={styles.avatarContainer}>
           <Image
@@ -73,7 +83,7 @@ const Profile = () => {
           </View>
         ))}
         <View style={styles.btn}>
-          <Button>Log out</Button>
+          <Button onPress={handleLogout}>Log out</Button>
         </View>
       </ScrollView>
     </View>

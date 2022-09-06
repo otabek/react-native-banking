@@ -3,6 +3,7 @@ import {createSlice} from '@reduxjs/toolkit';
 const initialState = {
   username: null,
   password: null,
+  avatar: null,
 };
 
 export const authSlice = createSlice({
@@ -13,12 +14,21 @@ export const authSlice = createSlice({
       state.username = action.payload.username;
       state.password = action.payload.password;
     },
+    setAvatar: (state, action) => {
+      state.avatar = action.payload;
+    },
+    resetAuth: () => initialState,
   },
+  // extraReducers: builder => {
+  //   builder.addCase(PURGE, state => {
+  //     AsyncStorage.multiRemove();
+  //   });
+  // },
 });
 
-// Action creators are generated for each case reducer function
-export const {setAuth} = authSlice.actions;
+export const {setAuth, setAvatar, resetAuth} = authSlice.actions;
 
-export const selectUsername = state => state.auth.username;
+export const selectUsername = state => state.username;
+export const selectAvatar = state => state.avatar;
 
 export default authSlice.reducer;
