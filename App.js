@@ -13,6 +13,7 @@ import {Provider} from 'react-redux';
 import {store} from './src/app/store';
 import LoginScreen from './src/screens/LoginScreen';
 import OnboardingScreen from './src/screens/OnboardingScreen/OnboardingScreen';
+import Profile from './src/screens/Profile';
 
 const App = () => {
   const Stack = createNativeStackNavigator();
@@ -21,6 +22,7 @@ const App = () => {
     <Provider store={store}>
       <NavigationContainer>
         <Stack.Navigator screenOptions={{headerShown: false}}>
+          <Stack.Screen name="Profile" component={Profile} />
           <Stack.Screen name="Onboarding" component={OnboardingScreen} />
           <Stack.Screen name="Login" component={LoginScreen} />
         </Stack.Navigator>
