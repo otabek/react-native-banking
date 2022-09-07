@@ -14,19 +14,20 @@ import Label from '../components/common/typography/Label';
 import CustomText from '../components/common/typography/CustomText';
 import PenIcon from '../../assets/icons/Pen.icon';
 import Button from '../components/common/Button';
-import {useDispatch} from 'react-redux';
-import {resetAuth} from '../features/auth/authSlice';
+import {useDispatch, useSelector} from 'react-redux';
+import {resetAuth, selectUsername} from '../features/auth/authSlice';
 
-const Profile = () => {
+const ProfileScreen = () => {
   const dispatch = useDispatch();
+  const userName = useSelector(selectUsername);
 
   const handleLogout = () => {
     dispatch(resetAuth());
   };
 
   const userDetails = [
-    {title: 'Beneficiary nickname', body: 'Ahlam Saade', icon: <PenIcon />},
-    {title: 'Beneficiary full name', body: 'Ahlam Saade'},
+    {title: 'Beneficiary nickname', body: userName, icon: <PenIcon />},
+    {title: 'Beneficiary full name', body: userName},
     {title: 'Address', body: 'SAMA, Head Office P.O. BOX 2992 Riyadh 11169'},
   ];
 
@@ -51,7 +52,7 @@ const Profile = () => {
           </TouchableOpacity>
         </View>
         <Text style={styles.avatarLabel}>SAIB Beneficiary</Text>
-        <Text style={styles.username}>Ahlam Saade</Text>
+        <Text style={styles.username}>{userName}</Text>
       </View>
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.topBorder} />
@@ -90,7 +91,7 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default ProfileScreen;
 
 const styles = StyleSheet.create({
   root: {

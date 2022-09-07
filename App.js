@@ -13,7 +13,7 @@ import {Provider, useSelector} from 'react-redux';
 import {persistor, store} from './src/app/store';
 import LoginScreen from './src/screens/LoginScreen';
 import OnboardingScreen from './src/screens/OnboardingScreen/OnboardingScreen';
-import Profile from './src/screens/Profile';
+import ProfileScreen from './src/screens/ProfileScreen';
 import {PersistGate} from 'redux-persist/integration/react';
 
 const Stack = createNativeStackNavigator();
@@ -26,7 +26,7 @@ const NavigationScreens = () => {
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
       {isLoggedIn ? (
-        <Stack.Screen name="Profile" component={Profile} />
+        <Stack.Screen name="Profile" component={ProfileScreen} />
       ) : (
         <>
           <Stack.Screen name="Onboarding" component={OnboardingScreen} />
