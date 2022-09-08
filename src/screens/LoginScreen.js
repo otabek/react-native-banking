@@ -21,8 +21,10 @@ import CustomText from '../components/common/typography/CustomText';
 import {USER_NAME, PASSWORD} from '@env';
 import {useDispatch} from 'react-redux';
 import {setAuth} from '../features/auth/authSlice';
+import {useNavigation} from '@react-navigation/native';
 
 const LoginScreen = () => {
+  const navigation = useNavigation();
   const dispatch = useDispatch();
 
   const [userName, setUserName] = useState('');
@@ -47,11 +49,15 @@ const LoginScreen = () => {
     setIsSecure(prev => !prev);
   };
 
+  const openMapScreen = () => {
+    navigation.navigate('Map');
+  };
+
   return (
     <SafeAreaView style={styles.root}>
       <StatusBar barStyle="light-content" />
       <View style={styles.navbar}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={openMapScreen}>
           <LocationIcon />
         </TouchableOpacity>
         <TouchableOpacity>
