@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   Image,
   ScrollView,
@@ -7,22 +8,49 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import React from 'react';
+import {useDispatch, useSelector} from 'react-redux';
+import {launchImageLibrary} from 'react-native-image-picker';
 import CameraIcon from '../../assets/icons/Camera.icon';
+import PenIcon from '../../assets/icons/Pen.icon';
 import {colors} from '../styles/colors';
 import Label from '../components/common/typography/Label';
 import CustomText from '../components/common/typography/CustomText';
-import PenIcon from '../../assets/icons/Pen.icon';
 import Button from '../components/common/Button';
-import {useDispatch, useSelector} from 'react-redux';
-import {resetAuth, selectUsername} from '../features/auth/authSlice';
+import {
+  resetAuth,
+  selectUsername,
+  selectAvatar,
+  setAvatar,
+} from '../features/auth/authSlice';
 
 const ProfileScreen = () => {
   const dispatch = useDispatch();
   const userName = useSelector(selectUsername);
+  const photoURI = useSelector(selectAvatar);
 
   const handleLogout = () => {
     dispatch(resetAuth());
+  };
+
+  const selectFile = () => {
+    const options = {
+      selectionLimit: 1,
+      mediaType: 'photo',
+      includeBase64: false,
+      includeExtra: false,
+    };
+
+    launchImageLibrary(options, res => {
+      if (res.didCancel) {
+        console.log('User cancelled image picker');
+      } else if (res.error) {
+        console.log('ImagePicker Error: ', res.error);
+      } else if (res.customButton) {
+        console.log('User tapped custom button: ', res.customButton);
+      } else {
+        dispatch(setAvatar(res.assets[0].uri));
+      }
+    });
   };
 
   const userDetails = [
@@ -42,15 +70,19 @@ const ProfileScreen = () => {
     <View style={styles.root}>
       <StatusBar barStyle="dark-content" />
       <View style={styles.avatarWrapper}>
-        <View style={styles.avatarContainer}>
+        <TouchableOpacity onPress={selectFile} style={styles.avatarContainer}>
           <Image
-            source={require('../../assets/avatar.png')}
-            style={styles.avatar}
+            resizeMode="cover"
+            resizeMethod="scale"
+            source={
+              photoURI ? {uri: photoURI} : require('../../assets/avatar.png')
+            }
+            style={photoURI ? styles.avatar : styles.avatarPng}
           />
-          <TouchableOpacity style={styles.icon}>
+          <View style={styles.icon}>
             <CameraIcon />
-          </TouchableOpacity>
-        </View>
+          </View>
+        </TouchableOpacity>
         <Text style={styles.avatarLabel}>SAIB Beneficiary</Text>
         <Text style={styles.username}>{userName}</Text>
       </View>
@@ -106,11 +138,19 @@ const styles = StyleSheet.create({
     width: 120,
     height: 120,
     marginTop: 103,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(21, 23, 35, 0.1)',
+    borderRadius: 60,
   },
   avatar: {
     width: 120,
     height: 120,
     borderRadius: 60,
+  },
+  avatarPng: {
+    width: 100,
+    height: 100,
   },
   icon: {
     position: 'absolute',
