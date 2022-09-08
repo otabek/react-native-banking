@@ -1,4 +1,5 @@
 import {
+  PermissionsAndroid,
   Platform,
   SafeAreaView,
   StatusBar,
@@ -9,19 +10,18 @@ import {
   View,
 } from 'react-native';
 import React, {useState} from 'react';
-import {colors} from '../styles/colors';
-import LocationIcon from '../../assets/icons/Location.icon';
-import BurgerIcon from '../../assets/icons/Burger.icon';
-import Label from '../components/common/typography/Label';
-import TickIcon from '../../assets/icons/Tick.icon';
-import EyeIcon from '../../assets/icons/Eye.icon';
-import EyeClosedIcon from '../../assets/icons/EyeClosed.icon';
-import Button from '../components/common/Button';
-import CustomText from '../components/common/typography/CustomText';
+import {colors} from '../../styles/colors';
+import LocationIcon from '../../../assets/icons/Location.icon';
+import BurgerIcon from '../../../assets/icons/Burger.icon';
+import Label from '../../components/common/typography/Label';
+import TickIcon from '../../../assets/icons/Tick.icon';
+import EyeIcon from '../../../assets/icons/Eye.icon';
+import EyeClosedIcon from '../../../assets/icons/EyeClosed.icon';
 import {USER_NAME, PASSWORD} from '@env';
 import {useDispatch} from 'react-redux';
-import {setAuth} from '../features/auth/authSlice';
+import {setAuth} from '../../features/auth/authSlice';
 import {useNavigation} from '@react-navigation/native';
+import LoginFooter from './LoginFooter';
 
 const LoginScreen = () => {
   const navigation = useNavigation();
@@ -53,11 +53,41 @@ const LoginScreen = () => {
     navigation.navigate('Map');
   };
 
+  const requestLocationPermission = async () => {
+    try {
+      const granted = await PermissionsAndroid.request(
+        PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
+        {
+          title: 'Allow “Saudi Investment Bank” to access your location?',
+          message:
+            'Your current location will be displayed ' +
+            'on the map and used for directions, ' +
+            'nearby search results and estimated ' +
+            'travel times.',
+          buttonNeutral: 'Allow Once',
+          buttonNegative: 'Don’t Allow',
+          buttonPositive: 'Allow While Using App',
+        },
+      );
+      if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+        openMapScreen();
+        console.log('You can use the location');
+      } else {
+        console.log('location permission denied');
+      }
+    } catch (err) {
+      console.warn(err);
+    }
+  };
+
   return (
     <SafeAreaView style={styles.root}>
       <StatusBar barStyle="light-content" />
       <View style={styles.navbar}>
-        <TouchableOpacity onPress={openMapScreen}>
+        <TouchableOpacity
+          onPress={
+            Platform.OS === 'ios' ? openMapScreen : requestLocationPermission
+          }>
           <LocationIcon />
         </TouchableOpacity>
         <TouchableOpacity>
@@ -94,20 +124,7 @@ const LoginScreen = () => {
           {isSecure ? <EyeIcon /> : <EyeClosedIcon />}
         </TouchableOpacity>
       </View>
-      <View style={styles.bottomContainer}>
-        <Button onPress={handleSubmit}>Ok, proceed</Button>
-        <TouchableOpacity style={styles.clientCreation}>
-          <CustomText color="white" textAlign="center">
-            Already a client? Create your user!
-          </CustomText>
-        </TouchableOpacity>
-        <View style={styles.firstAcc}>
-          <CustomText color="white">Not a client? </CustomText>
-          <TouchableOpacity>
-            <CustomText color="yellow">Open your first account</CustomText>
-          </TouchableOpacity>
-        </View>
-      </View>
+      <LoginFooter handleSubmit={handleSubmit} />
     </SafeAreaView>
   );
 };
@@ -156,24 +173,5 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 24,
     right: 16,
-  },
-  bottomContainer: {
-    flex: 1,
-    justifyContent: 'flex-end',
-    marginHorizontal: 16,
-  },
-  clientCreation: {
-    height: 54,
-    borderWidth: 1,
-    borderColor: 'rgba(255, 255, 255, 0.1)',
-    borderRadius: 6,
-    justifyContent: 'center',
-    marginTop: 15,
-  },
-  firstAcc: {
-    marginTop: 32,
-    marginBottom: 76,
-    flexDirection: 'row',
-    justifyContent: 'center',
   },
 });

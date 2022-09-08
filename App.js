@@ -11,7 +11,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {Provider, useSelector} from 'react-redux';
 import {persistor, store} from './src/app/store';
-import LoginScreen from './src/screens/LoginScreen';
+import LoginScreen from './src/screens/LoginScreen/LoginScreen';
 import OnboardingScreen from './src/screens/OnboardingScreen/OnboardingScreen';
 import ProfileScreen from './src/screens/ProfileScreen';
 import {PersistGate} from 'redux-persist/integration/react';
