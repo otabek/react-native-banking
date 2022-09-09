@@ -1,4 +1,11 @@
-import {Dimensions, FlatList, Platform, StyleSheet, View} from 'react-native';
+import {
+  Dimensions,
+  FlatList,
+  Platform,
+  StatusBar,
+  StyleSheet,
+  View,
+} from 'react-native';
 import React from 'react';
 import MapView, {Marker} from 'react-native-maps';
 import SearchBar from './SearchBar';
@@ -12,6 +19,7 @@ const MapScreen = () => {
 
   return (
     <View style={styles.root}>
+      <StatusBar barStyle="dark-content" />
       <MapView
         style={styles.map}
         mapType={Platform.OS === 'ios' ? 'mutedStandard' : 'standard'}

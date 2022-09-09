@@ -1,7 +1,8 @@
-import {Image, StyleSheet, Text, useWindowDimensions, View} from 'react-native';
+import {StyleSheet, Text, useWindowDimensions, View} from 'react-native';
 import React from 'react';
 import Video from 'react-native-video';
 import {colors} from '../../styles/colors';
+import LogoIcon from '../../../assets/Logo.icon';
 
 const SecondSpashScreen = () => {
   const {styles} = useStyles();
@@ -15,7 +16,7 @@ const SecondSpashScreen = () => {
         resizeMode="cover"
       />
       <View style={styles.logo}>
-        <Image source={require('../../../assets/logo.png')} />
+        <LogoIcon />
       </View>
       <View style={styles.content}>
         <View style={styles.textContainer}>
