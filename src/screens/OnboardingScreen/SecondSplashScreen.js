@@ -14,6 +14,7 @@ import {useNavigation} from '@react-navigation/native';
 const SecondSplashScreen = () => {
   const navigation = useNavigation();
   const {styles} = useStyles();
+  const step = require('../../../assets/videos/step.mp4');
 
   const handlePress = () => {
     navigation.navigate('Login');
@@ -22,7 +23,7 @@ const SecondSplashScreen = () => {
   return (
     <View style={styles.root}>
       <Video
-        source={require('../../../assets/videos/step.mp4')}
+        source={step}
         style={styles.backgroundVideo}
         repeat
         resizeMode="cover"

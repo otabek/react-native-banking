@@ -6,11 +6,12 @@ import LogoIcon from '../../../assets/Logo.icon';
 
 const SecondSpashScreen = () => {
   const {styles} = useStyles();
+  const waves = require('../../../assets/videos/waves.mp4');
 
   return (
     <View style={styles.root}>
       <Video
-        source={require('../../../assets/videos/waves.mp4')}
+        source={waves}
         style={styles.backgroundVideo}
         repeat
         resizeMode="cover"
