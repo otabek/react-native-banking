@@ -1,14 +1,9 @@
-import {
-  FlatList,
-  StatusBar,
-  StyleSheet,
-  useWindowDimensions,
-  View,
-} from 'react-native';
+import {FlatList, StatusBar, useWindowDimensions, View} from 'react-native';
 import React, {useState} from 'react';
 import SplashScreen from './SplashScreen';
 import SecondSpashScreen from './SecondSplashScreen';
 import DotNavigator from '../../components/DotNavigator';
+import {styles} from './OnboardingScreen.styles';
 
 const slides = [
   {
@@ -51,9 +46,3 @@ const OnboardingScreen = () => {
 };
 
 export default OnboardingScreen;
-
-const styles = StyleSheet.create({
-  root: {
-    flex: 1,
-  },
-});

@@ -1,18 +1,10 @@
-import {
-  Dimensions,
-  FlatList,
-  Platform,
-  StatusBar,
-  StyleSheet,
-  View,
-} from 'react-native';
+import {FlatList, Platform, StatusBar, View} from 'react-native';
 import React from 'react';
 import MapView, {Marker} from 'react-native-maps';
 import SearchBar from './SearchBar';
 import ATMCard from './ATMCard';
 import markers from '../../../locator.json';
-
-const {height} = Dimensions.get('window');
+import {styles} from './MapScreen.styles';
 
 const MapScreen = () => {
   const data = [{id: 1}, {id: 2}];
@@ -59,17 +51,3 @@ const MapScreen = () => {
 };
 
 export default MapScreen;
-
-const styles = StyleSheet.create({
-  root: {
-    flex: 1,
-    backgroundColor: '#fefefe',
-  },
-  map: {
-    height: height - 40,
-  },
-  atmContainer: {
-    position: 'absolute',
-    bottom: 30,
-  },
-});

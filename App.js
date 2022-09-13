@@ -13,7 +13,7 @@ import {Provider, useSelector} from 'react-redux';
 import {persistor, store} from './src/app/store';
 import LoginScreen from './src/screens/LoginScreen/LoginScreen';
 import OnboardingScreen from './src/screens/OnboardingScreen/OnboardingScreen';
-import ProfileScreen from './src/screens/ProfileScreen';
+import ProfileScreen from './src/screens/ProfileScreen/ProfileScreen';
 import {PersistGate} from 'redux-persist/integration/react';
 import MapScreen from './src/screens/MapScreen/MapScreen';
 

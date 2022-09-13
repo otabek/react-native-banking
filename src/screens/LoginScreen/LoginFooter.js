@@ -1,7 +1,8 @@
-import {StyleSheet, TouchableOpacity, View} from 'react-native';
+import {TouchableOpacity, View} from 'react-native';
 import React from 'react';
 import Button from '../../components/common/Button';
 import CustomText from '../../components/common/typography/CustomText';
+import {styles} from './LoginScreen.styles';
 
 const LoginFooter = ({handleSubmit}) => {
   return (
@@ -23,25 +24,3 @@ const LoginFooter = ({handleSubmit}) => {
 };
 
 export default LoginFooter;
-
-const styles = StyleSheet.create({
-  bottomContainer: {
-    flex: 1,
-    justifyContent: 'flex-end',
-    marginHorizontal: 16,
-  },
-  clientCreation: {
-    height: 54,
-    borderWidth: 1,
-    borderColor: 'rgba(255, 255, 255, 0.1)',
-    borderRadius: 6,
-    justifyContent: 'center',
-    marginTop: 15,
-  },
-  firstAcc: {
-    marginTop: 32,
-    marginBottom: 76,
-    flexDirection: 'row',
-    justifyContent: 'center',
-  },
-});
