@@ -22,28 +22,6 @@ export const styles = StyleSheet.create({
     marginTop: 70,
     textAlign: 'center',
   },
-  inputContainer: {
-    height: 70,
-    borderWidth: 1,
-    marginHorizontal: 16,
-    marginBottom: 16,
-    borderRadius: 6,
-    borderColor: 'rgba(255, 255, 255, 0.1)',
-    paddingLeft: 17,
-    paddingRight: 50,
-    paddingVertical: 15,
-  },
-  input: {
-    marginTop: 3,
-    fontSize: 14,
-    lineHeight: 20,
-    color: 'white',
-  },
-  icon: {
-    position: 'absolute',
-    top: 24,
-    right: 16,
-  },
   bottomContainer: {
     flex: 1,
     justifyContent: 'flex-end',
@@ -62,5 +40,10 @@ export const styles = StyleSheet.create({
     marginBottom: 76,
     flexDirection: 'row',
     justifyContent: 'center',
+  },
+  icon: {
+    position: 'absolute',
+    top: 24,
+    right: 16,
   },
 });

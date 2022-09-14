@@ -1,55 +1,25 @@
 import React from 'react';
-import {
-  Image,
-  ScrollView,
-  StatusBar,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import {ScrollView, StatusBar, Text, View} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
-import {launchImageLibrary} from 'react-native-image-picker';
-import CameraIcon from '../../../assets/icons/Camera.icon';
 import PenIcon from '../../../assets/icons/Pen.icon';
-import Label from '../../components/common/typography/Label';
-import CustomText from '../../components/common/typography/CustomText';
 import Button from '../../components/common/Button';
 import {
   resetAuth,
-  selectUsername,
+  selectUserName,
   selectAvatar,
-  setAvatar,
 } from '../../features/auth/authSlice';
 import {styles} from './ProfileScreen.styles';
+import Avatar from '../../components/common/Avatar';
+import UserDetail from './UserDetail';
+import BankDetail from './BankDetail';
 
 const ProfileScreen = () => {
   const dispatch = useDispatch();
-  const userName = useSelector(selectUsername);
+  const userName = useSelector(selectUserName);
   const photoURI = useSelector(selectAvatar);
 
   const handleLogout = () => {
     dispatch(resetAuth());
-  };
-
-  const selectFile = () => {
-    const options = {
-      selectionLimit: 1,
-      mediaType: 'photo',
-      includeBase64: false,
-      includeExtra: false,
-    };
-
-    launchImageLibrary(options, res => {
-      if (res.didCancel) {
-        console.log('User cancelled image picker');
-      } else if (res.error) {
-        console.log('ImagePicker Error: ', res.error);
-      } else if (res.customButton) {
-        console.log('User tapped custom button: ', res.customButton);
-      } else {
-        dispatch(setAvatar(res.assets[0].uri));
-      }
-    });
   };
 
   const userDetails = [
@@ -68,51 +38,16 @@ const ProfileScreen = () => {
   return (
     <View style={styles.root}>
       <StatusBar barStyle="dark-content" />
-      <View style={styles.avatarWrapper}>
-        <TouchableOpacity onPress={selectFile} style={styles.avatarContainer}>
-          <Image
-            resizeMode="cover"
-            resizeMethod="scale"
-            source={
-              photoURI ? {uri: photoURI} : require('../../../assets/avatar.png')
-            }
-            style={photoURI ? styles.avatar : styles.avatarPng}
-          />
-          <View style={styles.icon}>
-            <CameraIcon />
-          </View>
-        </TouchableOpacity>
-        <Text style={styles.avatarLabel}>SAIB Beneficiary</Text>
-        <Text style={styles.username}>{userName}</Text>
-      </View>
+      <Avatar photoURI={photoURI} userName={userName} />
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.topBorder} />
-        {userDetails.map(item => (
-          <View key={item.title} style={styles.userInfo}>
-            <View>
-              <Label>{item.title}</Label>
-              <View style={styles.mrgn}>
-                <CustomText>{item.body}</CustomText>
-              </View>
-            </View>
-            {item.icon && (
-              <TouchableOpacity>
-                <PenIcon />
-              </TouchableOpacity>
-            )}
-          </View>
+        {userDetails.map(userDetail => (
+          <UserDetail key={userDetail.title} userDetail={userDetail} />
         ))}
         <Text style={styles.bankHeader}>Beneficiary bank details</Text>
         <View style={styles.topBorder} />
-        {bankDetails.map(item => (
-          <View key={item.title} style={styles.userInfo}>
-            <View>
-              <Label>{item.title}</Label>
-              <View style={styles.mrgn}>
-                <CustomText>{item.body}</CustomText>
-              </View>
-            </View>
-          </View>
+        {bankDetails.map(bankDetail => (
+          <BankDetail key={bankDetail.title} bankDetail={bankDetail} />
         ))}
         <View style={styles.btn}>
           <Button onPress={handleLogout}>Log out</Button>

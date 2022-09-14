@@ -39,7 +39,7 @@ export const styles = StyleSheet.create({
   name: {
     marginBottom: 4,
   },
-  icon: {
+  copyIcon: {
     position: 'absolute',
     top: 15,
     right: 14,
@@ -58,7 +58,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'space-between',
     marginTop: 28,
   },
-  copyIcon: {
+  icon: {
     backgroundColor: colors.crude97,
     borderRadius: 32,
     width: 36,

@@ -20,7 +20,7 @@ import MapScreen from './src/screens/MapScreen/MapScreen';
 const Stack = createNativeStackNavigator();
 
 const NavigationScreens = () => {
-  const isLoggedIn = useSelector(state => state.username);
+  const isLoggedIn = useSelector(state => state.userName);
 
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>

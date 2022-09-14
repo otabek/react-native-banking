@@ -30,8 +30,10 @@ build/
 local.properties
 *.iml
 *.hprof
+apikey.properties
 
 # node.js
+.env
 #
 node_modules/
 npm-debug.log
