@@ -13,14 +13,14 @@ const LoginNav = () => {
     navigation.navigate('Map');
   };
 
+  const openMapOnAndroid = () => {
+    requestLocationPermission(openMapScreen);
+  };
+
   return (
     <View style={styles.navbar}>
       <TouchableOpacity
-        onPress={
-          Platform.OS === 'ios'
-            ? openMapScreen
-            : requestLocationPermission(openMapScreen)
-        }>
+        onPress={Platform.OS === 'ios' ? openMapScreen : openMapOnAndroid}>
         <LocationIcon />
       </TouchableOpacity>
       <TouchableOpacity>

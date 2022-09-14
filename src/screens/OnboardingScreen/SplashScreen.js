@@ -14,6 +14,7 @@ const SecondSpashScreen = () => {
         style={styles.backgroundVideo}
         repeat
         resizeMode="cover"
+        onError={err => console.log('error', err)}
       />
       <View style={styles.logo}>
         <LogoIcon />

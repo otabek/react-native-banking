@@ -26,6 +26,8 @@ const OnboardingScreen = () => {
     setCurrentSlideIndex(currentIndex);
   };
 
+  const renderItem = ({item}) => item.component;
+
   return (
     <View style={styles.root}>
       <StatusBar
@@ -37,7 +39,7 @@ const OnboardingScreen = () => {
         pagingEnabled
         showsHorizontalScrollIndicator={false}
         data={slides}
-        renderItem={({item}) => item.component}
+        renderItem={renderItem}
         keyExtractor={item => item.id}
       />
       <DotNavigator slides={slides} currentSlideIndex={currentSlideIndex} />

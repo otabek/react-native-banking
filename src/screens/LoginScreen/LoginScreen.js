@@ -14,8 +14,6 @@ const LoginScreen = () => {
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
 
-  console.log('auth', userName, '--', password);
-
   const handleSubmit = useCallback(() => {
     if (userName === USER_NAME && password === PASSWORD) {
       dispatch(setAuth({userName, password}));
