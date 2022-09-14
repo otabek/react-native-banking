@@ -1,21 +1,14 @@
 import {Text, View} from 'react-native';
 import React from 'react';
-import Video from 'react-native-video';
 import LogoIcon from '../../../assets/Logo.icon';
 import {styles} from './OnboardingScreen.styles';
+import BackgroundVideo from '../../components/layouts/BackgroundVideo';
+import waves from '../../../assets/videos/waves.mp4';
 
 const SecondSpashScreen = () => {
-  const waves = require('../../../assets/videos/waves.mp4');
-
   return (
     <View style={styles.videoRoot}>
-      <Video
-        source={waves}
-        style={styles.backgroundVideo}
-        repeat
-        resizeMode="cover"
-        onError={err => console.log('error', err)}
-      />
+      <BackgroundVideo source={waves} />
       <View style={styles.logo}>
         <LogoIcon />
       </View>

@@ -2,7 +2,7 @@ import {Text, TextInput, TouchableOpacity, View} from 'react-native';
 import React from 'react';
 import CompassIcon from '../../../assets/icons/Compass.icon';
 import CancelIcon from '../../../assets/icons/Cancel.icon';
-import {colors} from '../../styles/colors';
+import {colors} from '../../../assets/styles/colors';
 import SearchIcon from '../../../assets/icons/Search.icon';
 import {styles} from './MapScreen.styles';
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useMemo} from 'react';
 import {ScrollView, StatusBar, Text, View} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import PenIcon from '../../../assets/icons/Pen.icon';
@@ -22,18 +22,27 @@ const ProfileScreen = () => {
     dispatch(resetAuth());
   };
 
-  const userDetails = [
-    {title: 'Beneficiary nickname', body: userName, icon: <PenIcon />},
-    {title: 'Beneficiary full name', body: userName},
-    {title: 'Address', body: 'SAMA, Head Office P.O. BOX 2992 Riyadh 11169'},
-  ];
+  const userDetails = useMemo(
+    () => [
+      {title: 'Beneficiary nickname', body: userName, icon: <PenIcon />},
+      {title: 'Beneficiary full name', body: userName},
+      {title: 'Address', body: 'SAMA, Head Office P.O. BOX 2992 Riyadh 11169'},
+    ],
+    [userName],
+  );
 
-  const bankDetails = [
-    {title: 'Country of beneficiary’s bank', body: 'Saudi Arabia'},
-    {title: 'Currency', body: 'SAR'},
-    {title: 'Recipient account number', body: 'SA03 8000 0000 6080 1016 5463'},
-    {title: 'Bank', body: 'Saudi Arabia - SAIB Bank'},
-  ];
+  const bankDetails = useMemo(
+    () => [
+      {title: 'Country of beneficiary’s bank', body: 'Saudi Arabia'},
+      {title: 'Currency', body: 'SAR'},
+      {
+        title: 'Recipient account number',
+        body: 'SA03 8000 0000 6080 1016 5463',
+      },
+      {title: 'Bank', body: 'Saudi Arabia - SAIB Bank'},
+    ],
+    [],
+  );
 
   return (
     <View style={styles.root}>

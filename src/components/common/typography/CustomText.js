@@ -1,6 +1,6 @@
 import {StyleSheet, Text} from 'react-native';
 import React from 'react';
-import {colors} from '../../../styles/colors';
+import {colors} from '../../../../assets/styles/colors';
 
 const CustomText = ({color = 'black', textAlign, children}) => {
   return (

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import {Image, Text, TouchableOpacity, View} from 'react-native';
 import {launchImageLibrary} from 'react-native-image-picker';
 import {useDispatch} from 'react-redux';
@@ -9,7 +9,7 @@ import {styles} from '../../screens/ProfileScreen/ProfileScreen.styles';
 const Avatar = ({photoURI, userName}) => {
   const dispatch = useDispatch();
 
-  const selectFile = () => {
+  const selectFile = useCallback(() => {
     const options = {
       selectionLimit: 1,
       mediaType: 'photo',
@@ -28,7 +28,7 @@ const Avatar = ({photoURI, userName}) => {
         dispatch(setAvatar(res.assets[0].uri));
       }
     });
-  };
+  }, [dispatch]);
 
   return (
     <View style={styles.avatarWrapper}>

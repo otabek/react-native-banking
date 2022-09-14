@@ -1,5 +1,5 @@
 import {Dimensions, StyleSheet} from 'react-native';
-import {colors} from '../../styles/colors';
+import {colors} from '../../../assets/styles/colors';
 
 const {width, height} = Dimensions.get('window');
 
@@ -9,7 +9,6 @@ export const styles = StyleSheet.create({
   },
 
   videoRoot: {
-    flex: 1,
     width: width,
     height: height,
   },

@@ -1,13 +1,13 @@
 import {SafeAreaView, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
-import Video from 'react-native-video';
 import ArrowRightIcon from '../../../assets/icons/ArrowRight.icon';
 import {useNavigation} from '@react-navigation/native';
 import {styles} from './OnboardingScreen.styles';
+import BackgroundVideo from '../../components/layouts/BackgroundVideo';
+import step from '../../../assets/videos/step.mp4';
 
 const SecondSplashScreen = () => {
   const navigation = useNavigation();
-  const step = require('../../../assets/videos/step.mp4');
 
   const handlePress = () => {
     navigation.navigate('Login');
@@ -15,12 +15,7 @@ const SecondSplashScreen = () => {
 
   return (
     <View style={styles.videoRoot}>
-      <Video
-        source={step}
-        style={styles.backgroundVideo}
-        repeat
-        resizeMode="cover"
-      />
+      <BackgroundVideo source={step} />
       <SafeAreaView>
         <TouchableOpacity onPress={handlePress} style={styles.skipContainer}>
           <View style={styles.arrow}>
