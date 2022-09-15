@@ -1,26 +1,33 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import {Platform, TouchableOpacity, View} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import LocationIcon from '../../../assets/icons/Location.icon';
 import BurgerIcon from '../../../assets/icons/Burger.icon';
-import {requestLocationPermission} from '../../services/permissions/locationPermission';
+import {
+  getCurrentPosition,
+  requestLocationPermission,
+} from '../../services/permissions/locationPermission';
 import {styles} from './LoginScreen.styles';
 
 const LoginNav = () => {
   const navigation = useNavigation();
 
-  const openMapScreen = () => {
+  const navigateToMap = useCallback(() => {
     navigation.navigate('Map');
-  };
+  }, [navigation]);
 
-  const openMapOnAndroid = () => {
-    requestLocationPermission(openMapScreen);
-  };
+  const openMapOnIos = useCallback(() => {
+    getCurrentPosition(navigateToMap);
+  }, [navigateToMap]);
+
+  const openMapOnAndroid = useCallback(() => {
+    requestLocationPermission(navigateToMap);
+  }, [navigateToMap]);
 
   return (
     <View style={styles.navbar}>
       <TouchableOpacity
-        onPress={Platform.OS === 'ios' ? openMapScreen : openMapOnAndroid}>
+        onPress={Platform.OS === 'ios' ? openMapOnIos : openMapOnAndroid}>
         <LocationIcon />
       </TouchableOpacity>
       <TouchableOpacity>

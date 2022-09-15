@@ -1,6 +1,11 @@
 import {PermissionsAndroid} from 'react-native';
+import Geolocation from '@react-native-community/geolocation';
 
-export const requestLocationPermission = async onPermissionGranted => {
+export const getCurrentPosition = navigateToMap => {
+  Geolocation.getCurrentPosition(navigateToMap);
+};
+
+export const requestLocationPermission = async navigateToMap => {
   try {
     const granted = await PermissionsAndroid.request(
       PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
@@ -17,7 +22,7 @@ export const requestLocationPermission = async onPermissionGranted => {
       },
     );
     if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-      onPermissionGranted();
+      navigateToMap();
       console.log('You can use the location');
     } else {
       console.log('location permission denied');
