@@ -1,5 +1,5 @@
 import React, {useCallback} from 'react';
-import {Platform, TouchableOpacity, View} from 'react-native';
+import {LogBox, Platform, TouchableOpacity, View} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import LocationIcon from '../../../assets/icons/Location.icon';
 import BurgerIcon from '../../../assets/icons/Burger.icon';
@@ -8,6 +8,8 @@ import {
   requestLocationPermission,
 } from '../../services/permissions/locationPermission';
 import {styles} from './LoginScreen.styles';
+
+LogBox.ignoreLogs(['new NativeEventEmitter']);
 
 const LoginNav = () => {
   const navigation = useNavigation();
@@ -20,9 +22,13 @@ const LoginNav = () => {
     getCurrentPosition(navigateToMap);
   }, [navigateToMap]);
 
-  const openMapOnAndroid = useCallback(() => {
+  // const openMapOnAndroid = useCallback(() => {
+  //   requestLocationPermission(navigateToMap);
+  // }, [navigateToMap]);
+
+  const openMapOnAndroid = () => {
     requestLocationPermission(navigateToMap);
-  }, [navigateToMap]);
+  };
 
   return (
     <View style={styles.navbar}>
