@@ -22,13 +22,9 @@ const LoginNav = () => {
     getCurrentPosition(navigateToMap);
   }, [navigateToMap]);
 
-  // const openMapOnAndroid = useCallback(() => {
-  //   requestLocationPermission(navigateToMap);
-  // }, [navigateToMap]);
-
-  const openMapOnAndroid = () => {
+  const openMapOnAndroid = useCallback(() => {
     requestLocationPermission(navigateToMap);
-  };
+  }, [navigateToMap]);
 
   return (
     <View style={styles.navbar}>
