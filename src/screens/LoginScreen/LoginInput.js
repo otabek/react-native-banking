@@ -23,9 +23,9 @@ const LoginInput = ({userName, password, setUserName, setPassword}) => {
     [setPassword],
   );
 
-  const handleIsSecure = useCallback(() => {
+  const handleIsSecure = () => {
     setIsSecure(prev => !prev);
-  }, [setIsSecure]);
+  };
 
   return (
     <>

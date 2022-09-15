@@ -1,5 +1,5 @@
 import {TouchableOpacity, View} from 'react-native';
-import React from 'react';
+import React, {memo} from 'react';
 import CustomText from '../../components/common/typography/CustomText';
 import Button from '../../components/common/Button';
 import CopyIcon from '../../../assets/icons/Copy.icon';
@@ -26,4 +26,4 @@ const ATMCard = ({isLastItem}) => {
   );
 };
 
-export default ATMCard;
+export default memo(ATMCard);

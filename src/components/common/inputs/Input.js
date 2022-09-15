@@ -1,5 +1,5 @@
 import {StyleSheet, TextInput, View} from 'react-native';
-import React from 'react';
+import React, {memo} from 'react';
 import {colors} from '../../../../assets/styles/colors';
 import Label from '../typography/Label';
 
@@ -27,7 +27,7 @@ const Input = ({
   );
 };
 
-export default Input;
+export default memo(Input);
 
 const styles = StyleSheet.create({
   inputContainer: {

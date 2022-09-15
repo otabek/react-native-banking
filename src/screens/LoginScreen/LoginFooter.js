@@ -1,5 +1,5 @@
 import {TouchableOpacity, View} from 'react-native';
-import React from 'react';
+import React, {memo} from 'react';
 import Button from '../../components/common/Button';
 import CustomText from '../../components/common/typography/CustomText';
 import {styles} from './LoginScreen.styles';
@@ -23,4 +23,4 @@ const LoginFooter = ({handleSubmit}) => {
   );
 };
 
-export default LoginFooter;
+export default memo(LoginFooter);

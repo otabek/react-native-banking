@@ -18,13 +18,13 @@ const LoginNav = () => {
     navigation.navigate('Map');
   }, [navigation]);
 
-  const openMapOnIos = useCallback(() => {
+  const openMapOnIos = () => {
     getCurrentPosition(navigateToMap);
-  }, [navigateToMap]);
+  };
 
-  const openMapOnAndroid = useCallback(() => {
+  const openMapOnAndroid = () => {
     requestLocationPermission(navigateToMap);
-  }, [navigateToMap]);
+  };
 
   return (
     <View style={styles.navbar}>
