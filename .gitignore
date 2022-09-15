@@ -30,7 +30,6 @@ build/
 local.properties
 *.iml
 *.hprof
-apikey.properties
 
 # node.js
 .env
