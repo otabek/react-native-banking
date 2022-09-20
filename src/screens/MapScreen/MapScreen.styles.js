@@ -69,16 +69,15 @@ export const styles = StyleSheet.create({
   inputContainer: {
     justifyContent: 'center',
     marginTop: 26,
-    height: 54,
-    paddingHorizontal: 16,
-    paddingVertical: 18,
+    maxHeight: 54,
     borderWidth: 1,
     borderColor: colors.crude90,
     borderRadius: 6,
   },
   input: {
     fontSize: 14,
-    lineHeight: 20,
+    paddingHorizontal: 16,
+    paddingVertical: 18,
     color: colors.black,
   },
   searchIcon: {
