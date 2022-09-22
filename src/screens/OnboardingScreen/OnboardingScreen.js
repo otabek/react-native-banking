@@ -5,18 +5,18 @@ import SecondSpashScreen from './SecondSplashScreen';
 import DotNavigator from '../../components/layouts/DotNavigator';
 import {styles} from './OnboardingScreen.styles';
 
-const OnboardingScreen = () => {
-  const slides = [
-    {
-      id: 1,
-      component: <SplashScreen />,
-    },
-    {
-      id: 2,
-      component: <SecondSpashScreen />,
-    },
-  ];
+const slides = [
+  {
+    id: 1,
+    component: <SplashScreen />,
+  },
+  {
+    id: 2,
+    component: <SecondSpashScreen />,
+  },
+];
 
+const OnboardingScreen = () => {
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
   const {width} = useWindowDimensions();
 

@@ -20,13 +20,9 @@ const Avatar = ({photoURI, userName}) => {
     launchImageLibrary(options, res => {
       if (res.didCancel) {
         console.log('User cancelled image picker');
-      } else if (res.error) {
-        console.log('ImagePicker Error: ', res.error);
-      } else if (res.customButton) {
-        console.log('User tapped custom button: ', res.customButton);
-      } else {
-        dispatch(setAvatar(res.assets[0].uri));
+        return;
       }
+      dispatch(setAvatar(res.assets[0].uri));
     });
   }, [dispatch]);
 

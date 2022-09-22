@@ -5,10 +5,9 @@ import CancelIcon from '../../../assets/icons/Cancel.icon';
 import {colors} from '../../../assets/styles/colors';
 import SearchIcon from '../../../assets/icons/Search.icon';
 import {styles} from './MapScreen.styles';
+import {filters} from '../../constants/data';
 
 const SearchBar = () => {
-  const filters = [{name: 'ATMs'}, {name: 'For ladies'}, {name: 'Drive-up'}];
-
   return (
     <View style={styles.searchContainer}>
       <View style={styles.header}>

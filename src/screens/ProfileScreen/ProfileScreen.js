@@ -12,6 +12,7 @@ import {styles} from './ProfileScreen.styles';
 import Avatar from '../../components/common/Avatar';
 import UserDetail from './UserDetail';
 import BankDetail from './BankDetail';
+import {bankDetails} from '../../constants/data';
 
 const ProfileScreen = () => {
   const dispatch = useDispatch();
@@ -29,19 +30,6 @@ const ProfileScreen = () => {
       {title: 'Address', body: 'SAMA, Head Office P.O. BOX 2992 Riyadh 11169'},
     ],
     [userName],
-  );
-
-  const bankDetails = useMemo(
-    () => [
-      {title: 'Country of beneficiary’s bank', body: 'Saudi Arabia'},
-      {title: 'Currency', body: 'SAR'},
-      {
-        title: 'Recipient account number',
-        body: 'SA03 8000 0000 6080 1016 5463',
-      },
-      {title: 'Bank', body: 'Saudi Arabia - SAIB Bank'},
-    ],
-    [],
   );
 
   return (

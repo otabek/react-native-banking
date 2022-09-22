@@ -5,10 +5,9 @@ import SearchBar from './SearchBar';
 import ATMCard from './ATMCard';
 import markers from '../../../locator.json';
 import {styles} from './MapScreen.styles';
+import {cardData} from '../../constants/data';
 
 const MapScreen = () => {
-  const data = [{id: 1}, {id: 2}];
-
   return (
     <View style={styles.root}>
       <StatusBar barStyle="dark-content" />
@@ -40,9 +39,9 @@ const MapScreen = () => {
         horizontal
         pagingEnabled
         showsHorizontalScrollIndicator={false}
-        data={data}
+        data={cardData}
         renderItem={({index}) => (
-          <ATMCard isLastItem={index === data.length - 1} />
+          <ATMCard isLastItem={index === cardData.length - 1} />
         )}
         keyExtractor={item => item.id}
       />
